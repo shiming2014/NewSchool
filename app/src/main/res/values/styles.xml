@@ -1,0 +1,41 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="txt_lab" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 默认状态提示颜色和字体-->
+        <item name="android:colorControlNormal">#fff</item>
+        <item name="android:colorControlActivated">#fff</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textColorHint">#ffffff</item>
+        <!-- 下面可以根据需要设置，如果没有将默认使用默认theme的颜色 -->
+        <!-- Label标签的颜色 -->
+        <item name="colorAccent">#ffffff</item>
+        <!-- 默认状态状态设置底线颜色 -->
+        <item name="colorControlNormal">#ffffff</item>
+        <!-- 选择的底线颜色 -->
+        <item name="colorControlActivated">#fdfdfd</item>
+    </style>
+
+    <style name="add_course" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 默认状态提示颜色和字体-->
+
+
+        <item name="android:textColor">#393939</item>
+        <item name="android:textColorHint">#5c5c5c</item>
+        <!-- 下面可以根据需要设置，如果没有将默认使用默认theme的颜色 -->
+        <!-- Label标签的颜色 -->
+        <item name="android:colorAccent">#f7fa6e02</item>
+        <!-- 默认状态状态设置底线颜色 -->
+        <item name="android:colorControlNormal">#0e0e0e</item>
+        <!-- 选择的底线颜色 -->
+        <item name="android:colorControlActivated">#f7e9284f</item>
+    </style>
+
+</resources>

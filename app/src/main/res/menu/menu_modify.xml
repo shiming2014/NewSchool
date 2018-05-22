@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_modify_modify"
+        app:showAsAction="never"
+        android:title="修改信息"
+        />
+    <item
+        android:id="@+id/menu_modify_delete"
+        app:showAsAction="never"
+        android:title="归档课程"/>
+</menu>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c4292b"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.newschool.activity.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/loginActivity_logo"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="46dp"
+            android:layout_marginTop="46dp"
+            android:src="@drawable/logo_white" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/loginActivity_usernameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:textColorHint="#fff"
+            android:theme="@style/txt_lab"
+            app:counterEnabled="true">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/loginActivity_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="6dp"
+                android:drawableStart="@drawable/baseline_school_24"
+                android:hint="用户名/Email Address"
+                android:inputType="textEmailAddress"
+                android:textColor="#fff" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/loginActivity_pwdLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:textColorHint="#fff"
+            android:theme="@style/txt_lab"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="#fff">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/loginActivity_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="6dp"
+                android:drawableStart="@drawable/baseline_lock_24"
+                android:hint="密码/PassWord"
+                android:inputType="textPassword"
+                android:textColor="#fff" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/loginActivity_loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/login_btn"
+            android:text="登 录"
+            android:textColor="#b71c1c"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/loginActivity_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="6dp"
+            android:text="没有账号？注册一个>>"
+            android:textColor="#fff"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+</android.support.v4.widget.NestedScrollView>

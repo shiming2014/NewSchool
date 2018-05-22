@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1c4292b"
+    tools:context="com.example.newschool.activity.RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/registerActivity_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:title="用户注册"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <LinearLayout
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/baseline_mail_outline_24"
+                android:tint="@color/white"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/registerActivity_usernameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColorHint="#fff"
+                android:theme="@style/txt_lab"
+                app:counterEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/registerActivity_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="用户名/Email Address"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#fff" />
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/baseline_lock_24"
+                android:tint="@color/white"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/registerActivity_pwdLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColorHint="#fff"
+                android:theme="@style/txt_lab"
+                app:counterEnabled="true"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="#fff">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/registerActivity_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="密码/PassWords"
+                    android:inputType="textPassword"
+                    android:textColor="#fff" />
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/baseline_lock_open_24"
+                android:tint="@color/white"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/registerActivity_rePwdLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColorHint="#fff"
+                android:theme="@style/txt_lab"
+                app:counterEnabled="true"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="#fff">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/registerActivity_rePwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="确认密码/Confirm Passwor"
+                    android:inputType="textPassword"
+                    android:textColor="#fff" />
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/baseline_account_circle_24"
+                android:tint="#fff"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/registerActivity_teacherNameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColorHint="#fff"
+                android:theme="@style/txt_lab"
+                app:counterEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/registerActivity_teacherName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="称呼/Teacher's Name"
+                    android:inputType="text"
+                    android:textColor="#fff" />
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/baseline_phone_iphone_24"
+                android:tint="@color/white"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/registerActivity_phoneLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColorHint="#fff"
+                android:theme="@style/txt_lab"
+                app:counterEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/registerActivity_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="手机号/Phone Number"
+                    android:inputType="phone"
+                    android:textColor="#fff" />
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <Button
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:id="@+id/registerActivity_loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/login_btn"
+            android:gravity="center"
+            android:text="注 册"
+            android:textColor="#b71c1c"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
