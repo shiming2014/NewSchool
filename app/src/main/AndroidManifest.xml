@@ -26,8 +26,8 @@
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.AddcourseActivity" />
-        <activity android:name=".activity.ModifycourseActivity"/>
-
+        <activity android:name=".activity.ModifycourseActivity" />
+        <activity android:name=".activity.ClassbeginActivity"></activity>
     </application>
 
 </manifest>

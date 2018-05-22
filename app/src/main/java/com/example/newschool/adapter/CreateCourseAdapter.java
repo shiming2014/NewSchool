@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.newschool.R;
+import com.example.newschool.activity.ClassbeginActivity;
 import com.example.newschool.activity.MainActivity;
 import com.example.newschool.activity.ModifycourseActivity;
 import com.example.newschool.bean.CourseInfo;
@@ -91,6 +92,17 @@ public class CreateCourseAdapter extends RecyclerView.Adapter<CreateCourseAdapte
                 cm.setPrimaryClip(ClipData.newPlainText("text", holder.invitedCode.getText().toString()));
                 Toast.makeText(context, "邀请码已复制到粘贴板", Toast.LENGTH_SHORT).show();
                 return false;
+            }
+        });
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ClassbeginActivity.class);
+                intent.putExtra("backgroundColor", holder.backgroundColor);
+                intent.putExtra("invitedCode", holder.invitedCode.getText().toString());
+                intent.putExtra("courseName", holder.courseName.getText().toString());
+                ((MainActivity) context).startActivityForResult(intent, 2);
             }
         });
         return holder;
