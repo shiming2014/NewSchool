@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements
     private NavigationView navigationView;
     private TextView name, email;
 
+
+
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -151,6 +153,9 @@ public class MainActivity extends AppCompatActivity implements
         View headerView = navigationView.getHeaderView(0);
         name = headerView.findViewById(R.id.username);
         email = headerView.findViewById(R.id.mail);
+
+
+
 
     }
 

@@ -24,6 +24,7 @@ import com.example.newschool.activity.AddcourseActivity;
 import com.example.newschool.activity.MainActivity;
 import com.example.newschool.adapter.CreateCourseAdapter;
 import com.example.newschool.bean.CourseInfo;
+import com.example.newschool.bean.StudentInfo;
 import com.example.newschool.bean.TeacherInfo;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobPointer;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
@@ -144,8 +146,29 @@ public class ClassroomFragment extends Fragment {
                     Log.e("查询结果", "done: " + courseInfos.toString());
 
                     createCourseAdapter = new CreateCourseAdapter(courseInfos);
-                    createCourseAdapter.notifyDataSetChanged();
                     recyclerView.setAdapter(createCourseAdapter);
+
+                    for (final CourseInfo courseInfo : courseInfos) {
+                        BmobQuery<StudentInfo> query = new BmobQuery<StudentInfo>();
+
+                        query.addWhereRelatedTo("students", new BmobPointer(courseInfo));
+                        query.findObjects(new FindListener<StudentInfo>() {
+
+                            @Override
+                            public void done(List<StudentInfo> object, BmobException e) {
+                                if (e == null) {
+                                    courseInfo.setStuNumber(String.valueOf(object.size()));
+                                    createCourseAdapter.notifyDataSetChanged();
+                                } else {
+                                    Log.i("bmob", "失败：" + e.getMessage());
+                                }
+                            }
+
+                        });
+                    }
+
+
+
                 } else {
 
                 }
@@ -154,6 +177,59 @@ public class ClassroomFragment extends Fragment {
 
     }
 
+    private void addData2() {
+        BmobQuery<CourseInfo> query = new BmobQuery<CourseInfo>();
+        query.addWhereEqualTo("teacherInfo", BmobUser.getCurrentUser(TeacherInfo.class));
+        query.order("-updatedAt");
+
+        query.setCachePolicy(BmobQuery.CachePolicy.NETWORK_ELSE_CACHE);   // 如果没有缓存的话，则设置策略为NETWORK_ELSE_CACHE
+
+        query.addWhereEqualTo("status", 1);
+        query.setLimit(100);
+        query.findObjects(new FindListener<CourseInfo>() {
+
+            @Override
+            public void done(List<CourseInfo> object, BmobException e) {
+                if (e == null) {
+                    courseInfos = object;
+                    Log.e("查询结果", "done: " + courseInfos.toString());
+
+
+                    createCourseAdapter = new CreateCourseAdapter(courseInfos);
+                    recyclerView.setAdapter(createCourseAdapter);
+
+                    for (final CourseInfo courseInfo : courseInfos) {
+                        BmobQuery<StudentInfo> query = new BmobQuery<StudentInfo>();
+
+                        query.addWhereRelatedTo("students", new BmobPointer(courseInfo));
+                        query.findObjects(new FindListener<StudentInfo>() {
+
+                            @Override
+                            public void done(List<StudentInfo> object, BmobException e) {
+                                if (e == null) {
+                                    courseInfo.setStuNumber(String.valueOf(object.size()));
+                                    createCourseAdapter.notifyDataSetChanged();
+                                    swipeRefresh.setRefreshing(false);
+                                } else {
+                                    Log.i("bmob", "失败：" + e.getMessage());
+                                }
+                            }
+
+                        });
+                    }
+
+
+
+
+
+
+                } else {
+
+                }
+            }
+        });
+
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -177,36 +253,10 @@ public class ClassroomFragment extends Fragment {
         return false;
     }
 
-    private void addData2() {
-        BmobQuery<CourseInfo> query = new BmobQuery<CourseInfo>();
-        query.order("-updatedAt");
-        query.addWhereEqualTo("teacherInfo", BmobUser.getCurrentUser(TeacherInfo.class));
-        query.setCachePolicy(BmobQuery.CachePolicy.NETWORK_ELSE_CACHE);
-
-        query.addWhereEqualTo("status", 1);
-        query.setLimit(100);
-        query.findObjects(new FindListener<CourseInfo>() {
-
-            @Override
-            public void done(List<CourseInfo> object, BmobException e) {
-                if (e == null) {
-                    courseInfos = object;
-                    Log.e("查询结果", "done: " + courseInfos.toString());
-                    createCourseAdapter = new CreateCourseAdapter(courseInfos);
-                    createCourseAdapter.notifyDataSetChanged();
-                    recyclerView.setAdapter(createCourseAdapter);
-                    swipeRefresh.setRefreshing(false);
-                 //   Toast.makeText((Context) mListener,"数据已刷新",Toast.LENGTH_LONG).show();
-                } else {
-
-                }
-            }
-        });
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-       // Toast.makeText((Context) mListener, Integer.toString(requestCode), Toast.LENGTH_LONG).show();
+        // Toast.makeText((Context) mListener, Integer.toString(requestCode), Toast.LENGTH_LONG).show();
         switch (requestCode) {
             case 1:
             case 2:

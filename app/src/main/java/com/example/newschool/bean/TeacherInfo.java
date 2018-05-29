@@ -8,6 +8,15 @@ import cn.bmob.v3.BmobUser;
 
 public class TeacherInfo extends BmobUser {
     private String teacherName;
+    private String stuOrTeacher;
+
+    public String getStuOrTeacher() {
+        return stuOrTeacher;
+    }
+
+    public void setStuOrTeacher(String stuOrTeacher) {
+        this.stuOrTeacher = stuOrTeacher;
+    }
 
     public String getTeacherName() {
         return teacherName;

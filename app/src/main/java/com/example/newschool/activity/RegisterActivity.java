@@ -165,6 +165,7 @@ public class RegisterActivity extends AppCompatActivity {
         bmobUser.setEmail(username.getText().toString());
         bmobUser.setMobilePhoneNumber(phone.getText().toString());
         bmobUser.setTeacherName(teacherName.getText().toString());
+        bmobUser.setStuOrTeacher("1");//1代表老师
         bmobUser.signUp(new SaveListener<TeacherInfo>() {
             @Override
             public void done(TeacherInfo teacherInfo, BmobException e) {
@@ -203,8 +204,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public Boolean isCorrect() {
-        if (!username.getText().toString().contains("@")) {
-            usernameLayout.setError("请输入正确的邮箱号码");
+        if (username.getText().toString().length()==0) {
+            usernameLayout.setError("请输入正确的邮箱号码或手机号");
             return false;
         }
 

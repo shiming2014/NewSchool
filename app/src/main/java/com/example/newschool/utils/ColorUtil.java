@@ -56,4 +56,13 @@ public class ColorUtil {
         int index = (int) (Math.random() * COLORS.length);
         return COLORS[index];
     }
+
+    private static int COLOR_INDEX = 0;
+
+    public static int nextColor() {
+        if (COLOR_INDEX >= COLORS.length) {
+            COLOR_INDEX = 0;
+        }
+        return Color.parseColor(COLORS[COLOR_INDEX++]);
+    }
 }

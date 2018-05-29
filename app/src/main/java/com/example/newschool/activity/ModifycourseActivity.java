@@ -121,7 +121,7 @@ public class ModifycourseActivity extends AppCompatActivity {
         CourseInfo courseInfo = new CourseInfo();
         if (isCorrect()) {
             courseInfo.setCourseName(courseName.getText().toString());
-            courseInfo.setClassName(className.getText().toString());
+            courseInfo.setClaName(className.getText().toString());
             courseInfo.update(_invitedCode, new UpdateListener() {
 
                 @Override

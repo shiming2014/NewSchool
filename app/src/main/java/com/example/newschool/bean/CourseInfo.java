@@ -10,11 +10,30 @@ import cn.bmob.v3.datatype.BmobRelation;
 public class CourseInfo extends BmobObject {
     private Integer status;
     private String color;
-    private String courseName, className;
+    private String courseName, claName;
     private TeacherInfo teacherInfo;
     private BmobRelation students;
     private BmobRelation notify;//作业等
     private BmobRelation material;//资料等
+    private BmobRelation sign;//签到等
+
+    public String getStuNumber() {
+        return stuNumber;
+    }
+
+    public void setStuNumber(String stuNumber) {
+        this.stuNumber = stuNumber;
+    }
+
+    private String stuNumber;
+
+    public BmobRelation getSign() {
+        return sign;
+    }
+
+    public void setSign(BmobRelation sign) {
+        this.sign = sign;
+    }
 
     public Integer getStatus() {
         return status;
@@ -40,12 +59,12 @@ public class CourseInfo extends BmobObject {
         this.courseName = courseName;
     }
 
-    public String getClassName() {
-        return className;
+    public String getClaName() {
+        return claName;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setClaName(String className) {
+        this.claName = className;
     }
 
     public TeacherInfo getTeacherInfo() {
@@ -84,13 +103,14 @@ public class CourseInfo extends BmobObject {
     public String toString() {
         return "CourseInfo{" +
                 "status=" + status +
-                ", color=" + color +
+                ", color='" + color + '\'' +
                 ", courseName='" + courseName + '\'' +
-                ", className='" + className + '\'' +
+                ", claName='" + claName + '\'' +
                 ", teacherInfo=" + teacherInfo +
                 ", students=" + students +
                 ", notify=" + notify +
                 ", material=" + material +
+                ", sign=" + sign +
                 "} " + super.toString();
     }
 }

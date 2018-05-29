@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="6dp"
                 android:drawableStart="@drawable/baseline_school_24"
-                android:hint="用户名/Email Address"
+                android:hint="用户名/Email Address Or Phone Number"
                 android:inputType="textEmailAddress"
                 android:textColor="#fff" />
 

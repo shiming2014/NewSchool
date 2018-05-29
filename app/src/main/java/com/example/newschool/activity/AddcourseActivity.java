@@ -130,7 +130,7 @@ public class AddcourseActivity extends AppCompatActivity {
         CourseInfo courseInfo = new CourseInfo();
         courseInfo.setStatus(1);
         courseInfo.setCourseName(courseName.getText().toString());
-        courseInfo.setClassName(className.getText().toString());
+        courseInfo.setClaName(className.getText().toString());
         courseInfo.setTeacherInfo(BmobUser.getCurrentUser(TeacherInfo.class));
         final String temp=ColorUtil.getRandomColor();
         courseInfo.setColor(temp);

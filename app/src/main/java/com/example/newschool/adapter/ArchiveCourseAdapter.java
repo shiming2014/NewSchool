@@ -115,6 +115,7 @@ public class ArchiveCourseAdapter extends RecyclerView.Adapter<ArchiveCourseAdap
                     @Override
                     public void done(BmobException e) {
                         if(e==null){
+
                             ((MainActivity)context).onActivityResult(2,RESULT_OK,null);
                         }else{
                             Log.i("bmob","失败："+e.getMessage()+","+e.getErrorCode());
@@ -172,7 +173,7 @@ public class ArchiveCourseAdapter extends RecyclerView.Adapter<ArchiveCourseAdap
         CourseInfo courseInfo = courseInfos.get(position);
         holder.backgroundColor = courseInfo.getColor();
         holder.courseName.setText(courseInfo.getCourseName());
-        holder.className.setText(courseInfo.getClassName());
+        holder.className.setText(courseInfo.getClaName());
         if (null == courseInfo.getStudents()) {
             holder.stuCount.setText("0位学生");
         } else {

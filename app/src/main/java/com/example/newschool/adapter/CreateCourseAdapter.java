@@ -131,7 +131,7 @@ public class CreateCourseAdapter extends RecyclerView.Adapter<CreateCourseAdapte
                     @Override
                     public void done(BmobException e) {
                         if (e == null) {
-                            ((MainActivity)context).onActivityResult(2,RESULT_OK,null);
+                            ((MainActivity) context).onActivityResult(2, RESULT_OK, null);
                         } else {
                             Log.i("bmob", "更新失败：" + e.getMessage() + "," + e.getErrorCode());
                         }
@@ -152,12 +152,13 @@ public class CreateCourseAdapter extends RecyclerView.Adapter<CreateCourseAdapte
         CourseInfo courseInfo = courseInfos.get(position);
         holder.backgroundColor = courseInfo.getColor();
         holder.courseName.setText(courseInfo.getCourseName());
-        holder.className.setText(courseInfo.getClassName());
-        if (null == courseInfo.getStudents()) {
-            holder.stuCount.setText("0位学生");
-        } else {
-            holder.stuCount.setText(courseInfo.getStudents().getObjects().size() + "位学生");
-        }
+        holder.className.setText(courseInfo.getClaName());
+
+        if (null == courseInfo.getStuNumber()) {
+            holder.stuCount.setText("0 位学生");
+        } else
+            holder.stuCount.setText(courseInfo.getStuNumber() + " 位学生");
+
 
         holder.invitedCode.setText(courseInfo.getObjectId());
 

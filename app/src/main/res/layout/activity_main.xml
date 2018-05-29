@@ -32,9 +32,9 @@
 
         <fragment
             android:id="@+id/mainActivity_Fragment"
+            android:name="com.example.newschool.fragment.ClassroomFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="com.example.newschool.fragment.ClassroomFragment"/>
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <android.support.design.widget.NavigationView
