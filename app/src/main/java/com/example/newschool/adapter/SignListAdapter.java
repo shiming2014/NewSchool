@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.newschool.R;
 import com.example.newschool.activity.BaiduMapActivity;
+import com.example.newschool.activity.SignDetailActivity;
 import com.example.newschool.bean.SignInfo;
 import com.example.newschool.utils.ColorUtil;
 
@@ -46,14 +47,19 @@ public class SignListAdapter extends RecyclerView.Adapter<SignListAdapter.ViewHo
         final SignInfo signInfo = shareFiles.get(position);
         holder.imageView.setBackgroundColor(ColorUtil.nextColor());
         String s = signInfo.getCourseInfo().getClaName() + "\n"
-                + "签到开始于：" + signInfo.getCreatedAt().toString() + "\n"
-                + "签到结束于：" + signInfo.getDeadline().getDate().toString();
+                + "签到开始于：" + signInfo.getCreatedAt() + "\n"
+                + "签到结束于：" + signInfo.getDeadline().getDate();
         holder.title.setText(s);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context, BaiduMapActivity.class);
-                intent.putExtra("courseID",signInfo.getCourseInfo().getObjectId().toString());
+                Intent intent=new Intent(context, SignDetailActivity.class);
+                intent.putExtra("courseID", signInfo.getCourseInfo().getObjectId());
+                intent.putExtra("signInfoID", signInfo.getObjectId());
+                intent.putExtra("issueTime", signInfo.getCreatedAt());
+                intent.putExtra("deadline", signInfo.getDeadline().getDate());
+                intent.putExtra("claName", signInfo.getCourseInfo().getClaName());
+                intent.putExtra("signCode", signInfo.getSignCode());
                 context.startActivity(intent);
             }
         });

@@ -1,8 +1,10 @@
 package com.example.newschool.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -14,6 +16,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.example.newschool.R;
@@ -46,10 +49,14 @@ public class ClassbeginActivity extends AppCompatActivity implements
     private SongFab fab;
     private View sheetView;
 
+    @SuppressLint("ObsoleteSdkInt")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classbegin);
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
         initView();
         addListener();
     }
@@ -61,7 +68,9 @@ public class ClassbeginActivity extends AppCompatActivity implements
                     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                         if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
                             collapsingToolbarLayout.setTitleEnabled(false);
+                            fab.hide();
                         } else {
+                            fab.show();
                             collapsingToolbarLayout.setTitleEnabled(true);
                         }
 
@@ -80,6 +89,9 @@ public class ClassbeginActivity extends AppCompatActivity implements
         findViewById(R.id.fab_homework).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),PublishHomeworkActivity.class);
+                intent.putExtra("invitedCode",_objectId);
+                startActivity(intent);
                 materialSheetFab.hideSheet();
             }
         });

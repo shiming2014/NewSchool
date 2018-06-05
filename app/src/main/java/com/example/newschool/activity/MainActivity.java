@@ -1,8 +1,10 @@
 package com.example.newschool.activity;
 
 import android.annotation.SuppressLint;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -95,10 +97,21 @@ public class MainActivity extends AppCompatActivity implements
                         setToolbarTitle(R.id.nav_home);
                         replaceFragment(new ClassroomFragment());
                         break;
-//                    case R.id.nav_calendar:
+                    case R.id.nav_calendar:
 //                        setToolbarTitle(R.id.nav_calendar);
 //                        replaceFragment(new ClassroomFragment());
-//                        break;
+                        Intent i = new Intent();
+                        ComponentName cn = null;
+                        if (Build.VERSION.SDK_INT >= 8) {
+                            cn = new ComponentName("com.android.calendar", "com.android.calendar.LaunchActivity");
+                        } else {
+                            cn = new ComponentName("com.google.android.calendar", "com.android.calendar.LaunchActivity");
+                        }
+                        i.setComponent(cn);
+                        startActivity(i);
+
+
+                        break;
 //                    case R.id.nav_location:
 //                        setToolbarTitle(R.id.nav_location);
 //                        replaceFragment(new ClassroomFragment());
@@ -119,7 +132,10 @@ public class MainActivity extends AppCompatActivity implements
 //
                     case R.id.nav_logout:
                         BmobUser.logOut();
+                        Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                        startActivity(intent);
                         finish();
+
                         break;
 
 

@@ -83,6 +83,7 @@ public class BaiduMapActivity extends AppCompatActivity {
         getPersimmions();
     }
 
+    @SuppressLint("SetTextI18n")
     private void initView() {
         Intent intent = getIntent();
         courseID = intent.getStringExtra("invitedCode");
@@ -92,7 +93,7 @@ public class BaiduMapActivity extends AppCompatActivity {
         mapLat = findViewById(R.id.baiduMapActivity_lat);
         locationInfo = findViewById(R.id.baiduMapActivity_locationInfo);
         deadline = findViewById(R.id.baiduMapActivity_deadline);
-        deadline.setText(Calendar.getInstance().get(Calendar.YEAR) + "-" + (Calendar.getInstance().get(Calendar.MONTH) + 1) + "-" + Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + " " + Calendar.getInstance().get(Calendar.HOUR_OF_DAY) + ":" + Calendar.getInstance().get(Calendar.MINUTE));
+        deadline.setText(Calendar.getInstance().get(Calendar.YEAR) + "-" + (Calendar.getInstance().get(Calendar.MONTH) + 1) + "-" + Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + " " + Calendar.getInstance().get(Calendar.HOUR_OF_DAY) + ":" + (Calendar.getInstance().get(Calendar.MINUTE)+5));
         deadline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +115,7 @@ public class BaiduMapActivity extends AppCompatActivity {
                         //设置TextView显示最终选择的时间
                         deadline.setText(time);
                     }
-                }, hour, minute, true);
+                }, hour, minute+5, true);
                 timePickerDialog.show();
 
 
@@ -190,6 +191,7 @@ public class BaiduMapActivity extends AppCompatActivity {
 
                 } else {
                     progressBar.setVisibility(View.GONE);
+                    Log.i("done: ",e.toString());
                     Toast.makeText(getApplicationContext(), "发起签到失败，请重试", Toast.LENGTH_LONG).show();
                 }
             }

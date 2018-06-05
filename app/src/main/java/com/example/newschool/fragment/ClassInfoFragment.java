@@ -5,11 +5,30 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.newschool.R;
+import com.example.newschool.activity.ClassbeginActivity;
+import com.example.newschool.adapter.ClassmateNotSignAdapter;
+import com.example.newschool.adapter.InfoStreamAdapter;
+import com.example.newschool.bean.CourseInfo;
+import com.example.newschool.bean.HomeworkInfo;
+import com.example.newschool.bean.JoinedCourse;
+import com.example.newschool.bean.SignToCourse;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.CountListener;
+import cn.bmob.v3.listener.FindListener;
 
 
 /**
@@ -32,6 +51,11 @@ public class ClassInfoFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    private SwipeRefreshLayout refreshLayout;
+    private RecyclerView recyclerView;
+    private String courseId;
+    private List<HomeworkInfo> homeworkInfoList;
+private InfoStreamAdapter infoStreamAdapter;
     public ClassInfoFragment() {
         // Required empty public constructor
     }
@@ -67,8 +91,84 @@ public class ClassInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_classinfo, container, false);
+        View view = inflater.inflate(R.layout.fragment_classinfo, container, false);
+        initView(view);
+        return view;
     }
+
+    private void initView(View view) {
+        homeworkInfoList = new ArrayList<>();
+        refreshLayout = view.findViewById(R.id.classInfoFragment_freshLayout);
+        recyclerView = view.findViewById(R.id.classInfoFragment_recyclerView);
+        courseId = ((ClassbeginActivity) mListener).getIntent().getStringExtra("invitedCode");
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) mListener);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        refreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                addData();
+            }
+        });
+
+        infoStreamAdapter = new InfoStreamAdapter(homeworkInfoList);
+        recyclerView.setAdapter(infoStreamAdapter);
+        addData();
+    }
+
+    private void addData() {
+        homeworkInfoList = new ArrayList<>();
+        final CourseInfo courseInfo = new CourseInfo();
+        courseInfo.setObjectId(courseId);
+        BmobQuery<HomeworkInfo> query = new BmobQuery<HomeworkInfo>();
+        query.addWhereEqualTo("courseInfo", courseInfo);
+        query.setLimit(100);
+        query.include("teacherInfo,courseInfo");
+        query.order("-createdAt");
+        query.findObjects(new FindListener<HomeworkInfo>() {
+            @Override
+            public void done(List<HomeworkInfo> object, BmobException e) {
+                if (e == null) {
+                    Log.i("done: ", "查询成功：共" + object.size() + "条数据。");
+                    for (HomeworkInfo h : object
+                            ) {
+                        if (null != h.getFiles()) {
+                            h.setDone(String.valueOf(h.getFiles().size()));
+                            homeworkInfoList.add(h);
+                            Log.i("done: ", String.valueOf(h.getFiles().size()));
+                        }
+
+                    }
+
+
+//                    BmobQuery<JoinedCourse> query = new BmobQuery<JoinedCourse>();
+//                    query.addWhereEqualTo("courses", courseInfo);
+//                    query.count(JoinedCourse.class, new CountListener() {
+//                        @Override
+//                        public void done(Integer count, BmobException e) {
+//                            if(e==null){
+//                                Log.i("done: ","count对象个数为："+count);
+//                            }else{
+//                                Log.i("bmob","失败："+e.getMessage()+","+e.getErrorCode());
+//                            }
+//                        }
+//                    });
+
+                 //   InfoStreamAdapter
+                    infoStreamAdapter = new InfoStreamAdapter(object);
+                    infoStreamAdapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(infoStreamAdapter);
+                    refreshLayout.setRefreshing(false);
+                } else {
+                    refreshLayout.setRefreshing(false);
+                    Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
+                }
+            }
+        });
+
+
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

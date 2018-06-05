@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_classmate_cardView"
+    android:layout_width="match_parent"
+    android:layout_height="76dp"
+    android:layout_marginTop="2dp"
+    app:cardCornerRadius="4dp"
+    app:elevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/item_classmate_headshot"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:background="#4CAF50"
+            android:padding="12dp"
+            android:src="@drawable/baseline_school_24"
+            android:tint="@color/white" />
+
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_classmate_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:paddingLeft="6dp"
+                android:text="姓名：宋世铭
+班级：软件1402班
+学号：1411030206"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/item_classmate_distence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:drawablePadding="16dp"
+                android:paddingLeft="9dp"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/baseline_location_on_24"
+                android:drawableTint="#2ba9f2"
+                android:gravity="center_vertical"
+                android:text="520.1314m" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_classmate_signOnTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:drawableLeft="@drawable/baseline_check_circle_24"
+                android:drawableTint="#4CAF50"
+                android:gravity="center_vertical"
+                android:text="准时"
+                android:textColor="#4CAF50"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/item_classmate_signNotOnTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:drawableLeft="@drawable/baseline_error_24"
+                android:drawableTint="#c3292b"
+                android:gravity="center_vertical"
+                android:text="超时"
+                android:textColor="#c3292b" />
+
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/item_classmate_more"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:src="@drawable/baseline_keyboard_arrow_right_24"
+            android:tint="#9e9898" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

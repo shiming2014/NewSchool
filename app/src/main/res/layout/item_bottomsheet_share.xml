@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/bottomsheet_linearlayout"
+        android:onClick="bottomsheetOnClick"
+        >
+
+        <TextView
+            android:id="@+id/bottomsheet_attach"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="附加"
+            android:padding="16dp"
+            android:textSize="15sp"
+            android:onClick="bottomsheetOnClick"/>
+
+        <TextView
+            android:id="@+id/bottomsheet_cloud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_cloud_circle_24"
+            android:drawablePadding="32dp"
+            android:padding="16dp"
+            android:text="云端硬盘"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:onClick="bottomsheetOnClick"/>
+        <TextView
+            android:id="@+id/bottomsheet_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="链接"
+            android:drawablePadding="32dp"
+            android:drawableStart="@drawable/baseline_insert_link_24"
+            android:padding="16dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:onClick="bottomsheetOnClick"/>
+        <TextView
+            android:id="@+id/bottomsheet_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="文件"
+            android:drawablePadding="32dp"
+            android:drawableStart="@drawable/baseline_cloud_upload_24"
+            android:padding="16dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:onClick="bottomsheetOnClick"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d2d1d1"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/bottomsheet_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="拍照"
+            android:drawablePadding="32dp"
+            android:drawableStart="@drawable/baseline_add_a_photo_24"
+            android:padding="16dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:onClick="bottomsheetOnClick"/>
+        <TextView
+            android:id="@+id/bottomsheet_video"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="视频"
+            android:drawablePadding="32dp"
+            android:drawableStart="@drawable/baseline_videocam_24"
+            android:padding="16dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:onClick="bottomsheetOnClick"/>
+
+    </LinearLayout>
+
+
+</android.support.v4.widget.NestedScrollView>

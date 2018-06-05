@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/PublishHomeworkActivity_"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.newschool.activity.PublishHomeworkActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/PublishHomeworkActivity_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:navigationIcon="@drawable/baseline_clear_24"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="发布作业" />
+
+    <ProgressBar
+        android:id="@+id/PublishHomeworkActivity_progressBar"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:indeterminate="true"
+        android:indeterminateBehavior="repeat"
+        android:visibility="gone" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/PublishHomeworkActivity_titleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginTop="6dp"
+                android:theme="@style/add_course"
+                app:counterEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/PublishHomeworkActivity_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="标题/Title"
+                    android:inputType="text"
+                    android:lines="6"
+                    android:textColor="#2b2b2b" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/PublishHomeworkActivity_subTitleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginTop="6dp"
+                android:theme="@style/add_course"
+                app:counterEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/PublishHomeworkActivity_subTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="说明/Description(可选)"
+                    android:inputType="text"
+                    android:lines="6"
+                    android:textColor="#2b2b2b" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="提交期限："
+                    android:layout_marginLeft="6dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="6dp"
+                    android:drawableStart="@drawable/baseline_av_timer_24"/>
+
+                <TextView
+                    android:id="@+id/PublishHomeworkActivity_deadline_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="选择日期"
+                    android:layout_marginLeft="6dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="6dp"
+                    />
+                <TextView
+                    android:id="@+id/PublishHomeworkActivity_deadline_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="选择时间"
+                    android:layout_marginLeft="6dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="6dp"
+                    />
+
+            </LinearLayout>
+
+
+
+            <EditText
+                android:id="@+id/PublishHomeworkActivity_theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawablePadding="6dp"
+                android:drawableStart="@drawable/baseline_pets_24"
+                android:gravity="center_vertical"
+                android:padding="6dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="6dp"
+                android:hint="主题" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/PublishHomeworkActivity_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"/>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/item_signList_imgView"
             android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:background="?attr/colorPrimary"
             android:padding="16dp"

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/DoHomeworkActivity_"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.newschool.activity.StuHomeworkActivity">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/DoHomeworkActivity_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:navigationIcon="@drawable/baseline_clear_24"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="作业详情" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/DoHomeworkActivity_tabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="4dp"
+            app:layout_collapseMode="pin"
+            app:tabIndicatorColor="#fff"
+            app:tabMode="scrollable">
+
+            <android.support.design.widget.TabItem
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="说明" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="学生的作业" />
+
+        </android.support.design.widget.TabLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/DoHomeworkActivity_viewPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#83bfbfbf"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</LinearLayout>

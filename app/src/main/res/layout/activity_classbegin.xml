@@ -4,15 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
     tools:context="com.example.newschool.activity.ClassbeginActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:clipToPadding="true"
         android:id="@+id/ClassBeginActivity_appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
+            android:clipToPadding="true"
             android:id="@+id/ClassBeginActivity_collapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

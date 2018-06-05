@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_notSign_cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    app:cardCornerRadius="4dp"
+    app:elevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/item_notSign_headShot"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="#FF5722"
+                android:padding="12dp"
+                android:src="@drawable/baseline_cast_for_education_black_24"
+                android:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/item_notSign_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="4"
+                android:gravity="center_vertical"
+                android:paddingLeft="6dp"
+                android:text="姓名：宋世铭
+学号：1411030206"
+                android:textColor="#000" />
+
+            <ImageView
+                android:id="@+id/item_notSign_arrow_right"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:src="@drawable/baseline_keyboard_arrow_right_24"
+                android:tint="#9e9898" />
+
+            <ImageView
+                android:id="@+id/item_notSign_arrow_down"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:src="@drawable/baseline_keyboard_arrow_down_24"
+                android:tint="#9e9898"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/item_notSign_cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="4dp"
+            app:elevation="5dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0e938f8f"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/item_notSign_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/baseline_phone_iphone_24"
+                    android:gravity="center_horizontal"
+                    android:text="手机" />
+
+                <TextView
+                    android:id="@+id/item_notSign_sms"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/outline_sms_24"
+                    android:gravity="center_horizontal"
+                    android:text="短信" />
+
+                <TextView
+                    android:id="@+id/item_notSign_email"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/outline_alternate_email_24"
+                    android:gravity="center_horizontal"
+                    android:text="邮件" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

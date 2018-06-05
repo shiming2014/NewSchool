@@ -11,11 +11,28 @@ public class CourseInfo extends BmobObject {
     private Integer status;
     private String color;
     private String courseName, claName;
+    private String time,location;
     private TeacherInfo teacherInfo;
     private BmobRelation students;
     private BmobRelation notify;//作业等
     private BmobRelation material;//资料等
     private BmobRelation sign;//签到等
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     public String getStuNumber() {
         return stuNumber;

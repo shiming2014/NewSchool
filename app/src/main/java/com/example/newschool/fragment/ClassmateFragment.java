@@ -1,15 +1,32 @@
 package com.example.newschool.fragment;
 
 import android.content.Context;
+import android.graphics.CornerPathEffect;
 import android.net.Uri;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.newschool.R;
+import com.example.newschool.activity.ClassbeginActivity;
+import com.example.newschool.adapter.ClassmateNotSignAdapter;
+import com.example.newschool.bean.CourseInfo;
+import com.example.newschool.bean.JoinedCourse;
+import com.example.newschool.bean.StudentInfo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 
 /**
@@ -31,6 +48,11 @@ public class ClassmateFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private SwipeRefreshLayout refreshLayout;
+    private RecyclerView recyclerView;
+    private String courseId;
+    private List<StudentInfo> studentInfos;
 
     public ClassmateFragment() {
         // Required empty public constructor
@@ -67,7 +89,58 @@ public class ClassmateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_classmate, container, false);
+        View view = inflater.inflate(R.layout.fragment_classmate, container, false);
+        initView(view);
+        addData();
+        return view;
+    }
+
+    private void addData() {
+        studentInfos = new ArrayList<>();
+        CourseInfo courseInfo = new CourseInfo();
+        courseInfo.setObjectId(courseId);
+        BmobQuery<JoinedCourse> query = new BmobQuery<JoinedCourse>();
+        query.addWhereEqualTo("courses", courseInfo);// 查询当前用户的所有帖子
+        query.order("-updatedAt");
+        query.include("studentInfo");
+//执行查询方法
+        query.findObjects(new FindListener<JoinedCourse>() {
+            @Override
+            public void done(List<JoinedCourse> object, BmobException e) {
+                if (e == null) {
+                    Log.i("classmateFragment", "查询成功：共" + object.size() + "条数据。");
+                    for (JoinedCourse joinedCourse : object) {
+                        studentInfos.add(joinedCourse.getStudentInfo());
+                    }
+
+                    ClassmateNotSignAdapter classmateAdapter = new ClassmateNotSignAdapter(studentInfos);
+                    classmateAdapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(classmateAdapter);
+                    refreshLayout.setRefreshing(false);
+
+                } else {
+                    Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
+                }
+            }
+        });
+    }
+
+    private void initView(View view) {
+        studentInfos = new ArrayList<>();
+        courseId = ((ClassbeginActivity) mListener).getIntent().getStringExtra("invitedCode");
+        refreshLayout = view.findViewById(R.id.classmateFragment_freshLayout);
+        recyclerView = view.findViewById(R.id.classmateFragment_recyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) mListener);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        refreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                addData();
+            }
+        });
+        ClassmateNotSignAdapter classmateAdapter = new ClassmateNotSignAdapter(studentInfos);
+        recyclerView.setAdapter(classmateAdapter);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

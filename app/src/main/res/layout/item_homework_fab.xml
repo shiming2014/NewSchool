@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Your FAB implementation -->
+    <com.example.newschool.view.SongFab
+        android:id="@+id/fab"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/logo_white"
+        android:tint="@color/white" />
+
+    <!-- Overlay that dims the screen -->
+    <com.gordonwong.materialsheetfab.DimOverlayFrameLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Circular reveal container for the sheet -->
+    <io.codetail.widget.RevealLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="end|bottom"
+        android:orientation="vertical">
+
+        <!-- Sheet that contains your items -->
+        <android.support.v7.widget.CardView
+            android:id="@+id/fab_sheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="76dp">
+
+            <!-- TODO: Put your sheet items here -->
+            <!-- Sheet items -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/fab_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="16dp"
+                    android:drawableStart="@drawable/baseline_school_24"
+                    android:drawableTint="#2631c7"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:text="姓名："
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/fab_stuNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="16dp"
+                    android:drawableStart="@drawable/baseline_description_24"
+                    android:drawableTint="#ff9100"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:text="学号："
+                    android:textColor="#000" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#2e9c9c9c"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/fab_return"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:drawablePadding="16dp"
+                        android:drawableStart="@drawable/baseline_error_24"
+                        android:drawableTint="#b71c1c"
+                        android:gravity="center_horizontal"
+                        android:padding="10dp"
+                        android:text="打回重做"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/fab_submit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:drawablePadding="16dp"
+                        android:drawableStart="@drawable/baseline_check_circle_24"
+                        android:drawableTint="#4CAF50"
+                        android:gravity="center_horizontal"
+                        android:padding="10dp"
+                        android:text="批改打分"
+                        android:textSize="16sp" />
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+    </io.codetail.widget.RevealLinearLayout>
+
+</RelativeLayout>

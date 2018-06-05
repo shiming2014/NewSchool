@@ -170,6 +170,7 @@ public class LoginActivity extends AppCompatActivity {
                     }else {
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "登录失败\n" + e.toString(), Toast.LENGTH_SHORT).show();
@@ -184,6 +185,7 @@ public class LoginActivity extends AppCompatActivity {
         if(userInfo!=null){
            Intent intent = new Intent(this, MainActivity.class);
           startActivity(intent);
+          finish();
         }
         imglogo = findViewById(R.id.loginActivity_logo);
         Glide.with(this).load(R.drawable.logo_white).into(imglogo);
@@ -211,8 +213,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private Boolean isCorrect() {
-        if (!userName.getText().toString().contains("@")) {
-            userNameLayout.setError("请输入正确的邮箱号码");
+        if (userName.getText().toString().length()==0) {
+            userNameLayout.setError("请输入正确的邮箱号码或手机号");
             return false;
         }
 
