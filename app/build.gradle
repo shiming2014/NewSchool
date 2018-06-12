@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        shiming {
+            keyAlias 'shiming'
+            keyPassword 'ssm0425'
+            storeFile file('D:/shiming.jks')
+            storePassword 'ssm0425'
+        }
+    }
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.newschool"
@@ -14,6 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.shiming
         }
     }
     dexOptions {
